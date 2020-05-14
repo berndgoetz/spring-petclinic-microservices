@@ -10,3 +10,9 @@ spring:
   cloud:
     config:
       uri: http://config-server:8888
+---
+spring:
+  profiles: k8s
+  cloud:
+    config:
+      uri: http://config-server.svc.local:8888
