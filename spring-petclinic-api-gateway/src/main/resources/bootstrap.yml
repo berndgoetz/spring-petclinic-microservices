@@ -15,5 +15,5 @@ spring:
   profiles: k8s
   cloud:
     config:
-      uri: http://config-server.svc.local:8888
+      uri: http://config-server.default.svc.cluster.local:8888
       

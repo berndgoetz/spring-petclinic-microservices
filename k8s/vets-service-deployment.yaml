@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: vets-service
   name: vets-service
 spec:
-  replicas: 1
+  replicas: 10
   strategy: {}
   template:
     metadata:
@@ -18,17 +18,25 @@ spec:
         io.kompose.service: vets-service
     spec:
       containers:
-      - command:
-        - ./wait-for-it.sh
-        - discovery-server:8761
-        - --timeout=60
-        - --
-        - java
-        - -Djava.security.egd=file:/dev/./urandom
-        - -jar
-        - /app.jar
-        image: mszarlinski/spring-petclinic-vets-service
+      - image: odedia/spring-petclinic-vets-service
         name: vets-service
+        livenessProbe:
+          httpGet:
+            port: 8761
+            path: /actuator/health
+          initialDelaySeconds: 40
+          periodSeconds: 2
+        readinessProbe:
+          httpGet:
+            port: 8761
+            path: /actuator/health
+          initialDelaySeconds: 15
+        resources:
+          limits:
+            memory: 1Gi
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: k8s
         ports:
         - containerPort: 8083
         resources: {}

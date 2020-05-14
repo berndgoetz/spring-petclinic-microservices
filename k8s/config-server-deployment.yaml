@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: config-server
   name: config-server
 spec:
-  replicas: 1
+  replicas: 3
   strategy: {}
   template:
     metadata:
@@ -18,8 +18,22 @@ spec:
         io.kompose.service: config-server
     spec:
       containers:
-      - image: mszarlinski/spring-petclinic-config-server
+      - image: odedia/spring-petclinic-config-server
         name: config-server
+        livenessProbe:
+          httpGet:
+            port: 8888
+            path: /actuator/health
+          initialDelaySeconds: 40
+          periodSeconds: 2
+        readinessProbe:
+          httpGet:
+            port: 8888
+            path: /actuator/health
+          initialDelaySeconds: 15
+        resources:
+          limits:
+            memory: 1Gi
         ports:
         - containerPort: 8888
         resources: {}
