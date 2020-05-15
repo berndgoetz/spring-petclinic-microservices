@@ -14,6 +14,9 @@ spring:
 spring:
   profiles: k8s
   cloud:
+    config:
+      enabled: false
     kubernetes:
       config:
+        enabled: true
         name: pet-clinic-config
