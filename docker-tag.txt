@@ -1,11 +1,24 @@
+helm repo add tac https://charts.trials.tac.bitnami.com/demo --username "<your-user>" --password "<your-password>"
+
+helm install visits-db tac/mysql --version 6.12.0
+helm install vets-db tac/mysql --version 6.12.0
+helm install customers-db tac/mysql --version 6.12.0
+
+k get all -n databases -w
+
+helm repo add wavefront https://wavefronthq.github.io/helm/
+helm repo update
+
+helm install wavefront wavefront/wavefront --set wavefront.url=https://<your-url> --set wavefront.token=<your-token> --set clusterName=<your-cluster-name> --namespace wavefront
+
+k get all -n databases -w
+
 mvn spring-boot:build-image -DskipTests -Pk8s
-
-kubectl create secret generic wavefront --from-literal=token=1234 --from-literal=uri=https://<uri>
-
 
 docker tag spring-petclinic-api-gateway:2.3 odedia/spring-petclinic-api-gateway && docker push odedia/spring-petclinic-api-gateway & \
 docker tag spring-petclinic-vets-service:2.3 odedia/spring-petclinic-vets-service && docker push odedia/spring-petclinic-vets-service & \
 docker tag spring-petclinic-visits-service:2.3 odedia/spring-petclinic-visits-service && docker push odedia/spring-petclinic-visits-service & \
-docker tag spring-petclinic-customers-service:2.3 odedia/spring-petclinic-customers-service && docker push odedia/spring-petclinic-customers-service & \
+docker tag spring-petclinic-customers-service:2.3 odedia/spring-petclinic-customers-service && docker push odedia/spring-petclinic-customers-service &
 
 
+kubectl -n databases get pvc -o name | xargs kubectl -n databases delete

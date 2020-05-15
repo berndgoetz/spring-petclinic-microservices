@@ -36,16 +36,17 @@ data:
             enabled: true
           wavefront:
             enabled: true
-      security:
-        enabled: false
 
     customers-service-id: http://customers-service.spring-pet-clinic.svc.cluster.local:8080
     vists-service-id: http://vists-service.spring-pet-clinic.svc.cluster.local:8080
 
     spring:
       datasource:
-        schema: classpath*:db/hsqldb/schema.sql
-        data: classpath*:db/hsqldb/data.sql
+        schema: classpath*:db/mysql/schema.sql
+        data: classpath*:db/mysql/data.sql
+        platform: mysql
+        initialization-mode: always
+
       jpa:
         show-sql: true
         hibernate:
