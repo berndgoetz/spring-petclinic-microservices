@@ -65,7 +65,15 @@ public class ApiGatewayApplication {
 
     @Bean
     @LoadBalanced
+    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
     public WebClient.Builder loadBalancedWebClientBuilder() {
+        return WebClient.builder();
+    }
+
+    @Bean
+    @LoadBalanced
+    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
+    public WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }
 
