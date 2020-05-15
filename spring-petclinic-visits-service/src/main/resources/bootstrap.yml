@@ -12,7 +12,7 @@ spring:
       uri: http://config-server:8888
 ---
 spring:
-  profiles: k8s
+  profiles: kubernetes
   cloud:
     config:
       enabled: false
