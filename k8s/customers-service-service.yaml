@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: customers-service
   name: customers-service
+  namespace: spring-pet-clinic
 spec:
   ports:
   - name: "8080"

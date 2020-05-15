@@ -1,0 +1,23 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: "2020-05-15T17:36:50Z"
+    name: default:service-discovery-client
+    namespace: default
+    resourceVersion: "249845"
+    selfLink: /apis/rbac.authorization.k8s.io/v1/namespaces/default/rolebindings/default:service-discovery-client
+    uid: 6f95ef3e-0593-4faa-bff4-ce0e7012ba16
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: service-discovery-client
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

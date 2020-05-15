@@ -98,19 +98,19 @@ data:
               predicates:
                 - Path=/api/vet/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=1
             - id: visits-service
               uri: http://visits-service.default.svc.cluster.local:8080
               predicates:
                 - Path=/api/visit/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=1
             - id: customers-service
               uri: http://customers-service.default.svc.cluster.local:8080
               predicates:
                 - Path=/api/customer/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=1
     vets:
       cache:
         ttl: 60
