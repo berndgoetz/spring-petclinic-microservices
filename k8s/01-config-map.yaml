@@ -15,39 +15,6 @@ data:
       application:
         name: pet-clinic-k8s
       freemium-account: false
-    management:
-      metrics:
-        export:
-          wavefront:
-            enabled: false
-
-    # embedded database init, supports mysql too trough the 'mysql' spring profile
-    spring:
-      datasource:
-        schema: classpath*:db/hsqldb/schema.sql
-        data: classpath*:db/hsqldb/data.sql
-      jpa:
-        show-sql: true
-        hibernate:
-          ddl-auto: none
-          generate-ddl: false
-      sleuth:
-        sampler:
-          probability: 1.0
-        config:
-          # Allow the microservices to override the remote properties with their own System properties or config file
-          allow-override: true
-          # Override configuration with any local property source
-          override-none: true
-      cloud:
-        services:
-          registrationMethod: direct
-
-    # Spring Boot 1.5 makes actuator secure by default
-    management.security.enabled: false
-    # Temporary hack required by the Spring Boot 2 / Spring Cloud Finchley branch
-    # Waiting issue https://github.com/spring-projects/spring-boot/issues/13042
-    spring.cloud.refresh.refreshable: false
 
     # Logging
     logging.level.org.springframework: INFO
@@ -71,13 +38,36 @@ data:
         export:
           prometheus:
             enabled: true
-    customers-service-id: http://customers-service.default.svc.cluster.local:8080
-    vists-service-id: http://vists-service.default.svc.cluster.local:8080
+          wavefront:
+            enabled: false
+      security:
+        enabled: false
+
+    customers-service-id: http://customers-service.spring-pet-clinic.svc.cluster.local:8080
+    vists-service-id: http://vists-service.spring-pet-clinic.svc.cluster.local:8080
 
     spring:
+      datasource:
+        schema: classpath*:db/hsqldb/schema.sql
+        data: classpath*:db/hsqldb/data.sql
+      jpa:
+        show-sql: true
+        hibernate:
+          ddl-auto: none
+          generate-ddl: false
+      sleuth:
+        sampler:
+          probability: 1.0
+        config:
+          # Allow the microservices to override the remote properties with their own System properties or config file
+          allow-override: true
+          # Override configuration with any local property source
+          override-none: true
       messages:
         basename: messages/messages
       cloud:
+        refresh:
+          refreshable: false
         kubernetes:
           discovery:
             enabled: true
@@ -85,34 +75,34 @@ data:
           ribbon:
             enabled: false
         gateway:
-          routes:
           x-forwarded:  
             enabled: true 
             for-enabled: true 
             proto-enabled: true 
             host-append: false  
             port-append: false  
-            proto-append: false       
+            proto-append: false
+          routes:
             - id: vets-service
-              uri: http://vets-service.default.svc.cluster.local:8080
+              uri: http://vets-service.spring-pet-clinic.svc.cluster.local:8080
               predicates:
                 - Path=/api/vet/**
               filters:
-                - StripPrefix=1
+                - StripPrefix=2
             - id: visits-service
-              uri: http://visits-service.default.svc.cluster.local:8080
+              uri: http://visits-service.spring-pet-clinic.svc.cluster.local:8080
               predicates:
                 - Path=/api/visit/**
               filters:
-                - StripPrefix=1
+                - StripPrefix=2
             - id: customers-service
-              uri: http://customers-service.default.svc.cluster.local:8080
+              uri: http://customers-service.spring-pet-clinic.svc.cluster.local:8080
               predicates:
                 - Path=/api/customer/**
               filters:
-                - StripPrefix=1
+                - StripPrefix=2
     vets:
       cache:
         ttl: 60
-        heap-size: 100
+        heap-size: 101
 

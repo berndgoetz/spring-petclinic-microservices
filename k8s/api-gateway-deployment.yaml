@@ -10,7 +10,7 @@ metadata:
   name: api-gateway
   namespace: spring-pet-clinic
 spec:
-  replicas: 1
+  replicas: 5
   strategy: {}
   template:
     metadata:
