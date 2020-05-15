@@ -24,7 +24,7 @@ spec:
           httpGet:
             port: 8888
             path: /actuator/health
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           periodSeconds: 2
         readinessProbe:
           httpGet:
