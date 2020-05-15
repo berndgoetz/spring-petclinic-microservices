@@ -20,7 +20,6 @@ import java.time.Duration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4JCircuitBreakerFactory;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder;
 import org.springframework.cloud.client.circuitbreaker.Customizer;
@@ -52,28 +51,13 @@ public class ApiGatewayApplication {
 
     @Bean
     @LoadBalanced
-    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
     RestTemplate loadBalancedRestTemplate() {
         return new RestTemplate();
     }
 
     @Bean
-    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
-    @Bean
     @LoadBalanced
-    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
     public WebClient.Builder loadBalancedWebClientBuilder() {
-        return WebClient.builder();
-    }
-
-    @Bean
-    @LoadBalanced
-    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
-    public WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }
 
