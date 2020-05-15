@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: tracing-server
   name: tracing-server
 spec:
-  replicas: 10
+  replicas: 5
   strategy: {}
   template:
     metadata:
@@ -22,13 +22,13 @@ spec:
         name: tracing-server
         livenessProbe:
           httpGet:
-            port: 8761
+            port: 9411
             path: /actuator/health
-          initialDelaySeconds: 40
+          initialDelaySeconds: 60
           periodSeconds: 2
         readinessProbe:
           httpGet:
-            port: 8761
+            port: 9411
             path: /actuator/health
           initialDelaySeconds: 15
         resources:

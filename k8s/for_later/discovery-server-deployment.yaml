@@ -6,25 +6,25 @@ metadata:
     kompose.version: 1.2.0 (99f88ef)
   creationTimestamp: null
   labels:
-    io.kompose.service: admin-server
-  name: admin-server
+    io.kompose.service: discovery-server
+  name: discovery-server
 spec:
-  replicas: 20
+  replicas: 3
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: admin-server
+        io.kompose.service: discovery-server
     spec:
       containers:
-      - image: odedia/spring-petclinic-admin-server
-        name: admin-server
+      - image: odedia/spring-petclinic-discovery-server
+        name: discovery-server
         livenessProbe:
           httpGet:
             port: 8761
             path: /actuator/health
-          initialDelaySeconds: 40
+          initialDelaySeconds: 60
           periodSeconds: 2
         readinessProbe:
           httpGet:
@@ -38,7 +38,7 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: k8s
         ports:
-        - containerPort: 9090
+        - containerPort: 8761
         resources: {}
       restartPolicy: Always
 status: {}
