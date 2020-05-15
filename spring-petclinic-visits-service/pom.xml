@@ -110,15 +110,6 @@
 		<profile>
 			<id>local</id>
 			<dependencies>
-				<!-- Spring Cloud Services -->
-				<dependency>
-					<groupId>io.pivotal.spring.cloud</groupId>
-					<artifactId>spring-cloud-services-starter-config-client</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>io.pivotal.spring.cloud</groupId>
-					<artifactId>spring-cloud-services-starter-service-registry</artifactId>
-				</dependency>
 				<dependency>
 					<groupId>org.springframework.cloud</groupId>
 					<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

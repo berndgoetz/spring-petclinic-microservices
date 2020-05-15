@@ -1,9 +1,9 @@
-docker tag spring-petclinic-api-gateway:2.3 odedia/spring-petclinic-api-gateway && docker push odedia/spring-petclinic-api-gateway && \
-docker tag spring-petclinic-vets-service:2.3 odedia/spring-petclinic-vets-service && docker push odedia/spring-petclinic-vets-service && \
-docker tag spring-petclinic-visits-service:2.3 odedia/spring-petclinic-visits-service && docker push odedia/spring-petclinic-visits-service && \
-docker tag spring-petclinic-customers-service:2.3 odedia/spring-petclinic-customers-service && docker push odedia/spring-petclinic-customers-service && \
-docker tag spring-petclinic-customers-service:2.3 odedia/spring-petclinic-customers-service && docker push odedia/spring-petclinic-customers-service
-docker tag spring-petclinic-config-server:2.3 odedia/spring-petclinic-config-server && docker push odedia/spring-petclinic-config-server
-docker tag spring-petclinic-discovery-server:2.3 odedia/spring-petclinic-discovery-server && docker push odedia/spring-petclinic-discovery-server
+docker tag spring-petclinic-api-gateway:2.3 odedia/spring-petclinic-api-gateway && docker push odedia/spring-petclinic-api-gateway & \
+docker tag spring-petclinic-vets-service:2.3 odedia/spring-petclinic-vets-service && docker push odedia/spring-petclinic-vets-service & \
+docker tag spring-petclinic-visits-service:2.3 odedia/spring-petclinic-visits-service && docker push odedia/spring-petclinic-visits-service & \
+docker tag spring-petclinic-customers-service:2.3 odedia/spring-petclinic-customers-service && docker push odedia/spring-petclinic-customers-service & \
+docker tag spring-petclinic-customers-service:2.3 odedia/spring-petclinic-customers-service && docker push odedia/spring-petclinic-customers-service & \
+docker tag spring-petclinic-config-server:2.3 odedia/spring-petclinic-config-server && docker push odedia/spring-petclinic-config-server & \
+docker tag spring-petclinic-discovery-server:2.3 odedia/spring-petclinic-discovery-server && docker push odedia/spring-petclinic-discovery-server &
 
 
