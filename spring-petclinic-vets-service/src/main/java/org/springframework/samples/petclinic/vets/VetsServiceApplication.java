@@ -20,9 +20,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.samples.petclinic.vets.system.VetsProperties;
 
-import io.pivotal.cfenv.core.CfCredentials;
-import io.pivotal.cfenv.core.CfEnv;
-
 /**
  * @author Maciej Szarlinski
  */
@@ -31,17 +28,6 @@ import io.pivotal.cfenv.core.CfEnv;
 public class VetsServiceApplication {
 
 	public static void main(String[] args) {
-try {
-	CfEnv cfEnv = new CfEnv();
-	CfCredentials creds = cfEnv.findCredentialsByLabel("wavefront-proxy");
-	String uri = creds.getHost().concat(":").concat(creds.getPort());
-	//Set the wavefront URI = uri
-	//Possibly - remove provided wavefront token if exists since we should use the token set in the proxy in that case.
-	
-} catch (IllegalArgumentException e) {
-	//Continue normal flow
-}
-		
 		SpringApplication.run(VetsServiceApplication.class, args);
 	}
 }
