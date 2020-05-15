@@ -52,13 +52,13 @@ public class ApiGatewayApplication {
 
     @Bean
     @LoadBalanced
-    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", matchIfMissing = true)
+    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
     RestTemplate loadBalancedRestTemplate() {
         return new RestTemplate();
     }
 
     @Bean
-    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", matchIfMissing = false)
+    @ConditionalOnProperty(value = "discovery.loadbalanced.enabled", havingValue = "true", matchIfMissing = false)
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
