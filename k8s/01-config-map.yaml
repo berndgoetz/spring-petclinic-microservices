@@ -45,7 +45,7 @@ data:
         schema: classpath*:db/mysql/schema.sql
         data: classpath*:db/mysql/data.sql
         platform: mysql
-        initialization-mode: always
+        initialization-mode: embedded
 
       jpa:
         show-sql: true
@@ -63,14 +63,12 @@ data:
       messages:
         basename: messages/messages
       cloud:
-        refresh:
-          refreshable: false
         kubernetes:
           discovery:
             enabled: true
         loadbalancer:
           ribbon:
-            enabled: true
+            enabled: false
         gateway:
           x-forwarded:  
             enabled: true 
