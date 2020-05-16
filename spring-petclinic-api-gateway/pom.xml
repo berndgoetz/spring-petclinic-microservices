@@ -256,11 +256,7 @@
 			<dependencies>
 				<dependency>
 					<groupId>org.springframework.cloud</groupId>
-					<artifactId>spring-cloud-starter-kubernetes</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.springframework.cloud</groupId>
-					<artifactId>spring-cloud-starter-kubernetes-config</artifactId>
+					<artifactId>spring-cloud-starter-kubernetes-all</artifactId>
 				</dependency>
 			</dependencies>
 		</profile>
