@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
@@ -11,6 +11,9 @@ metadata:
   namespace: spring-pet-clinic
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      io.kompose.service: visits-service
   strategy: {}
   template:
     metadata:
