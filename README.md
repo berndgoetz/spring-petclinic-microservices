@@ -34,7 +34,7 @@ do
   echo -n "."
 done
 
-mvn clean package
+mvn clean package -Pcloud
 cf push --no-start
 
 cf add-network-policy api-gateway --destination-app vets-service --protocol tcp --port 8080
