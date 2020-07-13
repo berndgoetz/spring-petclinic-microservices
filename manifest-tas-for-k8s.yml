@@ -1,0 +1,56 @@
+---
+applications:
+  - name: customers-service
+    path: spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.3.jar
+    health-check-type: http
+    health-check-http-endpoint: /actuator/health
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+      SPRING_PROFILES_ACTIVE: k8s
+    # services:
+      # - customers-db
+      # - config
+      # - registry
+      # - wavefront
+
+  - name: vets-service
+    path: spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.3.jar
+    health-check-type: http
+    health-check-http-endpoint: /actuator/health
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+      SPRING_PROFILES_ACTIVE: k8s
+    # services:
+    #   - vets-db
+    #   - config
+    #   - registry
+    #   - wavefront
+
+  - name: visits-service
+    path: spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.3.jar
+    health-check-type: http
+    health-check-http-endpoint: /actuator/health
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+      SPRING_PROFILES_ACTIVE: k8s
+    # services:
+    #   - visits-db
+    #   - config
+    #   - registry
+    #   - wavefront
+
+  - name: api-gateway
+    path: spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.3.1.jar
+    health-check-type: http
+    health-check-http-endpoint: /actuator/health
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+      SPRING_PROFILES_ACTIVE: k8s
+    # services:
+    #   - config
+    #   - registry
+    #   - wavefront
