@@ -1,7 +1,7 @@
 ---
 applications:
   - name: customers-service
-    path: spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.3.jar
+    path: spring-petclinic-customers-service/target/customers-service.jar
     health-check-type: http
     health-check-http-endpoint: /actuator/health
     env:
@@ -15,7 +15,7 @@ applications:
       # - wavefront
 
   - name: vets-service
-    path: spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.3.jar
+    path: spring-petclinic-vets-service/target/vets-service.jar
     health-check-type: http
     health-check-http-endpoint: /actuator/health
     env:
@@ -29,7 +29,7 @@ applications:
     #   - wavefront
 
   - name: visits-service
-    path: spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.3.jar
+    path: spring-petclinic-visits-service/target/visits-service.jar
     health-check-type: http
     health-check-http-endpoint: /actuator/health
     env:
@@ -43,7 +43,7 @@ applications:
     #   - wavefront
 
   - name: api-gateway
-    path: spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.3.1.jar
+    path: spring-petclinic-api-gateway/target/api-gateway.jar
     health-check-type: http
     health-check-http-endpoint: /actuator/health
     env:

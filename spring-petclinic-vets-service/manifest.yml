@@ -1,0 +1,10 @@
+---
+applications:
+- name: vets-service
+  # path: target/spring-petclinic-api-gateway-2.3.1.RELEASE.jar
+  health-check-type: http
+  health-check-http-endpoint: /actuator/health
+  # env:
+  #   JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  #   JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+  #   SPRING_PROFILES_ACTIVE: k8s

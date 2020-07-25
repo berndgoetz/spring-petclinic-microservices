@@ -2,6 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: pet-clinic-config
+  namespace: cf-workloads
 data:
   application.yaml: |-
     server:
@@ -37,8 +38,8 @@ data:
           wavefront:
             enabled: true
 
-    customers-service-id: http://customers-service.spring-pet-clinic.svc.cluster.local:8080
-    vists-service-id: http://vists-service.spring-pet-clinic.svc.cluster.local:8080
+    customers-service-id: https://customers-service.apps.sys.run.haas-243.pez.pivotal.io
+    vists-service-id: https://vists-service.apps.sys.run.haas-243.pez.pivotal.io
 
     spring:
       datasource:
@@ -79,19 +80,19 @@ data:
             proto-append: false
           routes:
             - id: vets-service
-              uri: http://vets-service.spring-pet-clinic.svc.cluster.local:8080
+              uri: https://vets-service.apps.sys.run.haas-243.pez.pivotal.io
               predicates:
                 - Path=/api/vet/**
               filters:
                 - StripPrefix=2
             - id: visits-service
-              uri: http://visits-service.spring-pet-clinic.svc.cluster.local:8080
+              uri: https://visits-service.apps.sys.run.haas-243.pez.pivotal.io
               predicates:
                 - Path=/api/visit/**
               filters:
                 - StripPrefix=2
             - id: customers-service
-              uri: http://customers-service.spring-pet-clinic.svc.cluster.local:8080
+              uri: https://customers-service.apps.sys.run.haas-243.pez.pivotal.io
               predicates:
                 - Path=/api/customer/**
               filters:

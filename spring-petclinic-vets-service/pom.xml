@@ -179,6 +179,41 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<build>
+		<finalName>vets-service</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<configuration>
+						<image>
+							<name>odedia/${project.artifactId}</name>
+						</image>
+					</configuration>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- Spring Boot Actuator displays build-related information if a 
+							META-INF/build-info.properties file is present -->
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+						<configuration>
+							<additionalProperties>
+								<encoding.source>${project.build.sourceEncoding}</encoding.source>
+								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+								<java.source>${maven.compiler.source}</java.source>
+								<java.target>${maven.compiler.target}</java.target>
+							</additionalProperties>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
 	<profiles>
 		<profile>
 			<id>local</id>
